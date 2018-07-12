@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-	echo1()
 	echo2()
 }
 
@@ -22,7 +21,3 @@ func echo2() {
 		fmt.Println(i, arg)
 	}
 }
-
-// func echo3() {
-// 	fmt.Println(strings.Join(os.Args, "\n"))
-// }
