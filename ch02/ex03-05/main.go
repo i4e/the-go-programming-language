@@ -17,6 +17,10 @@ func main() {
 	measureTime(PopCountLoop, a)
 	measureTime(PopCountShift, a)
 	measureTime(PopCountClear, a)
+	measurTimeNTimes(PopCount, a, 100)
+	measurTimeNTimes(PopCountLoop, a, 100)
+	measurTimeNTimes(PopCountShift, a, 100)
+	measurTimeNTimes(PopCountClear, a, 100)
 }
 
 func measureTime(fn func(uint64) int, a uint64) {
@@ -24,6 +28,18 @@ func measureTime(fn func(uint64) int, a uint64) {
 	result := fn(a)
 	time := time.Since(start).Seconds()
 	fmt.Println(result, time)
+}
+
+func measurTimeNTimes(fn func(uint64) int, a uint64, n int) {
+	var totalTime float64
+	for i := 0; i < n; i++ {
+		start := time.Now()
+		fn(a)
+		secs := time.Since(start).Seconds()
+		totalTime += secs
+	}
+	fmt.Println(totalTime)
+	return
 }
 
 func init() {
