@@ -13,8 +13,8 @@ const (
 	zscale        = height * 0.4        // pixels per z unit
 	angle         = math.Pi / 6         // angle of x, y axes (=30°)
 
-	MaxFloat64 = 1.797693134862315708145274237317043567981e+308 // 2**1023 * (2**53 - 1) / 2**52
-	MinFloat64 = 4.940656458412465441765687928682213723651e-324 // 1 / 2**(1023 - 1 + 52)
+	maxFloat64 = 1.797693134862315708145274237317043567981e+308 // 2**1023 * (2**53 - 1) / 2**52
+	minFloat64 = 4.940656458412465441765687928682213723651e-324 // 1 / 2**(1023 - 1 + 52)
 
 	red  = 0x00ff0000
 	blue = 0x000000ff
@@ -88,8 +88,8 @@ func corner(i, j int) (float64, float64, float64) {
 }
 
 func maxMin(f func(x, y float64) float64) (float64, float64) {
-	max := MinFloat64
-	min := MaxFloat64
+	max := minFloat64
+	min := maxFloat64
 	for i := 0; i < cells; i++ {
 		for j := 0; j < cells; j++ {
 			x := xyrange * (float64(i)/cells - 0.5)
