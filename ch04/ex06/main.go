@@ -8,12 +8,12 @@ import (
 func main() {
 	a := "aaaaa aaa    aa  aaaaaaa"
 	b := []byte(a)
-	c := removeDupSpace(b)
+	c := removeDuplicatedSpaces(b)
 	fmt.Println(string(c))
 }
 
 // FIXME: 「もとのスライス」
-func removeDupSpace(bs []byte) []byte {
+func removeDuplicatedSpaces(bs []byte) []byte {
 	result := bs[:0]
 	for i, b := range bs {
 		if unicode.IsSpace(rune(b)) {
