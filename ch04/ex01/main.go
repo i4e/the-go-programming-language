@@ -11,10 +11,10 @@ func main() {
 	c1 := sha256.Sum256([]byte("a"))
 	c2 := sha256.Sum256([]byte("x"))
 	fmt.Printf("%x\n%x\n", c1, c2)
-	fmt.Println(HammingDistancePopCount(c1, c2))
+	fmt.Println(hammingDistancePopCount(c1, c2))
 }
 
-func HammingDistance(c1 [32]byte, c2 [32]byte) int {
+func hammingDistance(c1 [32]byte, c2 [32]byte) int {
 	d := 0
 	for i := 0; i < 32; i++ {
 		x := c1[i]
@@ -30,7 +30,7 @@ func HammingDistance(c1 [32]byte, c2 [32]byte) int {
 	return d
 }
 
-func HammingDistancePopCount(c1 [32]byte, c2 [32]byte) int {
+func hammingDistancePopCount(c1 [32]byte, c2 [32]byte) int {
 	d := 0
 	for i := 0; i < 32; i++ {
 		diffBits := c1[i] ^ c2[i]
