@@ -11,12 +11,12 @@ func main() {
 	}
 	fmt.Println("max:", maxValue)
 
-	// maxValue, err = max()
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// fmt.Println("max:", maxValue)
+	maxValue, err = max()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("max:", maxValue)
 
 	fmt.Println("max:", max2(values[0], values[1:]...))
 
