@@ -6,10 +6,12 @@ import (
 )
 
 var prereqs = map[string][]string{
-	"algorithms":     {"data structures"},
+	"algorithms": {"data structures"},
+	// cyclic
 	"linear algebra": {"calculus"},
 	"hoge":           {"linear algebra"},
 	"calculus":       {"hoge"},
+
 	"compilers": {
 		"data structures",
 		"formal languages",
