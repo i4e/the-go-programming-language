@@ -1,3 +1,3 @@
 #!/bin/bash
 
-go run main.go https://www.google.co
+go run main.go https://www.google.com
