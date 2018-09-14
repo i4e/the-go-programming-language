@@ -5,39 +5,51 @@ import (
 )
 
 func TestLineCounter(t *testing.T) {
-	c := &LineCounter{}
-	p := []byte("one\ntwo\nthree\n")
-	n, err := c.Write(p)
-	if n != len(p) {
-		t.Logf("len: %d != %d", n, len(p))
-		t.Fail()
+	tests := []struct {
+		data     string
+		expected int
+	}{
+		{
+			"one",
+			1,
+		},
+		{
+			"one\ntwo\nthree\n",
+			4,
+		},
 	}
-	if err != nil {
-		t.Log("err: ", err)
-		t.Fail()
-	}
-	if c.N() != 3 {
-		t.Logf("lines: %d != 3", c.N())
+
+	for _, test := range tests {
+		var c LineCounter
+		byteString := []byte(test.data)
+		c.Write(byteString)
+		if int(c) != test.expected {
+			t.Errorf("expected %d, but actual %d", test.expected, c)
+		}
 	}
 }
 
 func TestWordCounter(t *testing.T) {
-	c := &WordCounter{}
-	data := [][]byte{
-		[]byte("The upcoming word is sp"),
-		[]byte("lit across the buffer boundary. "),
-		[]byte(" And this one ends on the buffer boundary."),
-		[]byte(" Last words."),
+	tests := []struct {
+		data     string
+		expected int
+	}{
+		{
+			"one",
+			1,
+		},
+		{
+			"one two three\nfour five six",
+			6,
+		},
 	}
-	for _, p := range data {
-		n, err := c.Write(p)
-		if n != len(p) || err != nil {
-			t.Logf(`bad write: p="%s" n=%d err="%s"`, string(p), n, err)
-			t.Fail()
+
+	for _, test := range tests {
+		var c WordCounter
+		byteString := []byte(test.data)
+		c.Write(byteString)
+		if int(c) != test.expected {
+			t.Errorf("expected %d, but actual %d", test.expected, c)
 		}
-	}
-	if c.N() != 19 {
-		t.Logf("words: %d != 19", c.N())
-		t.Fail()
 	}
 }

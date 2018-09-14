@@ -6,12 +6,26 @@ import (
 )
 
 func TestCountingWriter(t *testing.T) {
-	b := &bytes.Buffer{}
-	c, n := CountingWriter(b)
-	data := []byte("hi there")
-	c.Write(data)
-	if *n != int64(len(data)) {
-		t.Logf("%d != %d", n, len(data))
-		t.Fail()
+	tests := []struct {
+		data     string
+		expected int64
+	}{
+		{
+			"one",
+			3,
+		},
+		{
+			"one two three",
+			13,
+		},
+	}
+
+	for _, test := range tests {
+		byteString := []byte(test.data)
+		w, c := CountingWriter(bytes.NewBufferString(""))
+		w.Write(byteString)
+		if *c != test.expected {
+			t.Errorf("expected %d, but actual %d", test.expected, c)
+		}
 	}
 }

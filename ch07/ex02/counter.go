@@ -1,22 +1,21 @@
-// ex7.2 wraps a writer to count written words.
 package counter
 
 import (
 	"io"
 )
 
-type byteCounter struct {
-	w       io.Writer
-	written int64
+type Counter struct {
+	writer io.Writer
+	count  int64
 }
 
-func (c *byteCounter) Write(p []byte) (n int, err error) {
-	n, err = c.w.Write(p)
-	c.written += int64(n)
+func (c *Counter) Write(p []byte) (n int, err error) {
+	c.count += int64(len(p))
+	n, err = c.writer.Write(p)
 	return
 }
 
 func CountingWriter(w io.Writer) (io.Writer, *int64) {
-	c := &byteCounter{w, 0}
-	return c, &c.written
+	c := &Counter{w, 0}
+	return c, &c.count
 }
