@@ -1,0 +1,38 @@
+Go研修 振り返り
+21 Dec 2018
+Tags: golang, training
+
+石井 潤
+株式会社リクルートテクノロジーズ
+jun_ishii@r.recruit.co.jp
+
+
+* 良かった点と影響
+
+良かった点
+
+- 初年度にしっかりとした基本を身につけられた
+- 低レイヤーの話が貴重かつ面白かった
+- 課題が多く、手を動かす機会が多かった
+
+影響
+
+- Go研修で学習したことを軸にして、他言語の理解もスムーズになった（はず）
+- 低レイヤーへの興味
+
+* 反省点 
+
+- セルフコントロール…
+- 本の内容をマスターしたかというとまだまだ
+- 建設的な質問があまりできなかった
+- Go で自発的に何か作ったりしてない
+
+
+* 今Go (こんご)
+
+- 復習 / やりきれなかった課題をやる
+- 低レイヤーに興味があるので，Goで学んでみる
+.link https://interpreterbook.com/ Writing An Interpreter In Go
+.link https://compilerbook.com/ Writing A Compiler In Go
+.link https://www.lambdanote.com/products/go Goならわかるシステムプログラミング
+- 次の ISUCON は Go で挑戦
